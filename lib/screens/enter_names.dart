@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:impostor_game/bloc/enter_names_bloc.dart';
+import 'package:impostor_game/bloc/enter_names/enter_names_bloc.dart';
 
 class EnterNames extends StatelessWidget {
   const EnterNames({super.key});
@@ -37,7 +37,7 @@ class EnterNames extends StatelessWidget {
               ],
             ),
           ),
-          bottomNavigationBar: ElevatedButton(onPressed: () => context.go('game'), child: Text("Next")),
+          bottomNavigationBar: ElevatedButton(onPressed: () => context.go('/game'), child: Text("Next")),
         );
       },
     );

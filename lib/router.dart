@@ -12,7 +12,7 @@ final GoRouter router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
       path: '/',
-      builder: (BuildContext context, GoRouterState state) => const EnterNames(),
+      builder: (BuildContext context, GoRouterState state) => EnterNames(),
     ),
     GoRoute(
       path: '/game',

@@ -21,25 +21,31 @@ class EnterNames extends StatelessWidget {
                 TextField(
                   controller: _controller,
                   decoration: InputDecoration(hintText: "Enter name"),
-                  onChanged: (value) {currentName = value;},
+                  onChanged: (value) {
+                    currentName = value;
+                  },
                 ),
                 ElevatedButton(
                   onPressed: () {
                     _controller.clear();
                     context.read<EnterNamesBloc>().add(EnterName(currentName));
-                  }, child: Text("Enter")
+                  },
+                  child: Text("Enter"),
                 ),
                 ListView.builder(
                   shrinkWrap: true,
                   itemCount: state.names.length,
                   itemBuilder: (context, index) {
                     return Text(state.names[index]);
-                  }
+                  },
                 ),
               ],
             ),
           ),
-          bottomNavigationBar: ElevatedButton(onPressed: () => context.go('/game'), child: Text("Next")),
+          bottomNavigationBar: ElevatedButton(
+            onPressed: () => context.go('/game'),
+            child: Text("Next"),
+          ),
         );
       },
     );

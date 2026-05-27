@@ -9,14 +9,20 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   final List<String> names;
 
   GameBloc({required List<String> initialNames})
-      : names = initialNames,
-        super(GameState(
+    : names = initialNames,
+      super(
+        GameState(
           initialNames,
           initialNames.isNotEmpty ? Random().nextInt(initialNames.length) : 0,
-        )) {
+          false,
+        ),
+      ) {
     on<GameStart>(_onGameStart);
     on<NextPlayer>(_onNextPlayer);
     on<GameEnd>(_onGameEnd);
+    on<TurnCard>(
+      (event, emit) => emit(state.copyWith(roleVisible: !state.roleVisible)),
+    );
   }
 
   void _onGameStart(GameStart event, Emitter<GameState> emit) {

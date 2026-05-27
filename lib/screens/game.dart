@@ -9,13 +9,25 @@ class GamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
+        final text = state.roleVisible ? "Impostor" : "Test hello hi";
         return Scaffold(
-          body: SizedBox.expand(
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 50, horizontal: 30),
-              child: Card(
-                child: Center(child: Text("Impostor Game")),
-              ),
+          body: Padding(
+            padding: EdgeInsets.symmetric(vertical: 50, horizontal: 30),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Card(
+                    child: InkWell(
+                      onTap: () => context.read<GameBloc>().add(TurnCard()),
+                      child: Center(child: Text(text)),
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () => context.read<GameBloc>().add(NextPlayer()),
+                  child: Text("Next"),
+                ),
+              ],
             ),
           ),
         );

@@ -9,9 +9,7 @@ class ImpostorApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => EnterNamesBloc()),
-      ],
+      providers: [BlocProvider(create: (context) => EnterNamesBloc())],
       child: MaterialApp.router(
         routerConfig: router,
         title: 'Impostor Game',

@@ -9,7 +9,6 @@ class GamePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GameBloc, GameState>(
       builder: (context, state) {
-        final text = state.roleVisible ? "Impostor" : "Test hello hi";
         return Scaffold(
           body: Padding(
             padding: EdgeInsets.symmetric(vertical: 50, horizontal: 30),
@@ -19,7 +18,7 @@ class GamePage extends StatelessWidget {
                   child: Card(
                     child: InkWell(
                       onTap: () => context.read<GameBloc>().add(TurnCard()),
-                      child: Center(child: Text(text)),
+                      child: Center(child: Text(getText(state))),
                     ),
                   ),
                 ),
@@ -33,5 +32,16 @@ class GamePage extends StatelessWidget {
         );
       },
     );
+  }
+
+  String getText(GameState state) {
+    if (!state.roleVisible) {
+      return "Press to show your role";
+    } else if (state.currentPlayerIndex == state.impostorIndex) {
+      return "You are the impostor!";
+    } else if (state.currentPlayerIndex < state.names.length) {
+      return state.word;
+    }
+    return "Something went wrong";
   }
 }

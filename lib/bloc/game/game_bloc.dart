@@ -7,33 +7,28 @@ part 'game_state.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
   final List<String> names;
+  static final Random _random = Random();
 
-  GameBloc({required List<String> initialNames})
-    : names = initialNames,
-      super(
+  GameBloc({required List<String> initialNames, required List<String> words})
+      : names = initialNames,
+        super(
         GameState(
           initialNames,
-          initialNames.isNotEmpty ? Random().nextInt(initialNames.length) : 0,
+          initialNames.isNotEmpty ? _random.nextInt(initialNames.length) : 0,
           false,
+          0,
+          words[_random.nextInt(words.length)],
         ),
       ) {
-    on<GameStart>(_onGameStart);
     on<NextPlayer>(_onNextPlayer);
-    on<GameEnd>(_onGameEnd);
-    on<TurnCard>(
-      (event, emit) => emit(state.copyWith(roleVisible: !state.roleVisible)),
-    );
+    on<TurnCard>(_onTurnCard);
   }
 
-  void _onGameStart(GameStart event, Emitter<GameState> emit) {
-    // Handle game start logic
+  void _onTurnCard(TurnCard event, Emitter<GameState> emit) {
+    emit(state.copyWith(roleVisible: !state.roleVisible));
   }
 
   void _onNextPlayer(NextPlayer event, Emitter<GameState> emit) {
-    // Handle next player logic
-  }
-
-  void _onGameEnd(GameEnd event, Emitter<GameState> emit) {
-    // Handle game end logic
+    emit(state.copyWith(roleVisible: false, currentPlayerIndex: state.currentPlayerIndex + 1));
   }
 }

@@ -6,6 +6,7 @@ import 'package:impostor_game/bloc/enter_names/enter_names_bloc.dart';
 import 'package:impostor_game/bloc/game/game_bloc.dart';
 import 'package:impostor_game/screens/enter_names.dart';
 import 'package:impostor_game/screens/game.dart';
+import 'package:impostor_game/screens/game_end.dart';
 
 GoRouter createRouter(List<String> words) => GoRouter(
   routes: <RouteBase>[
@@ -21,6 +22,12 @@ GoRouter createRouter(List<String> words) => GoRouter(
           create: (context) => GameBloc(initialNames: names, words: words),
           child: const GamePage(),
         );
+      },
+    ),
+    GoRoute(
+      path: '/game_end',
+      builder: (BuildContext context, GoRouterState state) {
+        return const GameEndScreen();
       },
     ),
   ],

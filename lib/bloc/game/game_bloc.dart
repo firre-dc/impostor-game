@@ -10,8 +10,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   static final Random _random = Random();
 
   GameBloc({required List<String> initialNames, required List<String> words})
-      : names = initialNames,
-        super(
+    : names = initialNames,
+      super(
         GameState(
           initialNames,
           initialNames.isNotEmpty ? _random.nextInt(initialNames.length) : 0,
@@ -29,6 +29,11 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   void _onNextPlayer(NextPlayer event, Emitter<GameState> emit) {
-    emit(state.copyWith(roleVisible: false, currentPlayerIndex: state.currentPlayerIndex + 1));
+    emit(
+      state.copyWith(
+        roleVisible: false,
+        currentPlayerIndex: state.currentPlayerIndex + 1,
+      ),
+    );
   }
 }

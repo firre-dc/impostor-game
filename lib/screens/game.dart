@@ -38,7 +38,7 @@ class GamePage extends StatelessWidget {
                   onPressed: () =>
                       state.currentPlayerIndex < state.names.length - 1
                       ? context.read<GameBloc>().add(NextPlayer())
-                      : context.go("/game_end"),
+                      : context.go("/game_end", extra: state),
                   child: Text(
                     state.currentPlayerIndex < state.names.length - 1
                         ? "Next"

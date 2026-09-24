@@ -27,7 +27,8 @@ GoRouter createRouter(List<String> words) => GoRouter(
     GoRoute(
       path: '/game_end',
       builder: (BuildContext context, GoRouterState state) {
-        return const GameEndScreen();
+        final gameState = state.extra as GameState;
+        return GameEndScreen(gameState: gameState);
       },
     ),
   ],

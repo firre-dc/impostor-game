@@ -21,12 +21,14 @@ class GameBloc extends Bloc<GameEvent, GameState> {
            initialNames.isNotEmpty ? _random.nextInt(initialNames.length) : 0,
            false,
            0,
+           0,
            words[_random.nextInt(words.length)],
            impostorGetsTip,
          ),
        ) {
     on<NextPlayer>(_onNextPlayer);
     on<TurnCard>(_onTurnCard);
+    on<PickStarter>(_onPickStarter);
   }
 
   void _onTurnCard(TurnCard event, Emitter<GameState> emit) {
@@ -40,5 +42,21 @@ class GameBloc extends Bloc<GameEvent, GameState> {
         currentPlayerIndex: state.currentPlayerIndex + 1,
       ),
     );
+  }
+
+  void _onPickStarter(PickStarter event, Emitter<GameState> emit) {
+    const double impostorWeight = 0.1;
+    final double total = state.names.length - 1 + impostorWeight;
+    double roll = _random.nextDouble() * total;
+    int starterIndex = state.names.length - 1;
+    for (int i = 0; i < state.names.length; i++) {
+      final double weight = i == state.impostorIndex ? impostorWeight : 1.0;
+      if (roll < weight) {
+        starterIndex = i;
+        break;
+      }
+      roll -= weight;
+    }
+    emit(state.copyWith(starterIndex: starterIndex));
   }
 }

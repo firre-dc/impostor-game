@@ -35,10 +35,15 @@ class GamePage extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () =>
-                      state.currentPlayerIndex < state.names.length - 1
-                      ? context.read<GameBloc>().add(NextPlayer())
-                      : context.go("/game_end", extra: state),
+                  onPressed: () {
+                    if (state.currentPlayerIndex < state.names.length - 1) {
+                      context.read<GameBloc>().add(NextPlayer());
+                    } else {
+                      final bloc = context.read<GameBloc>();
+                      bloc.add(PickStarter());
+                      context.go("/game_end", extra: bloc.state);
+                    }
+                  },
                   child: Text(
                     state.currentPlayerIndex < state.names.length - 1
                         ? "Next"

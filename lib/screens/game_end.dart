@@ -66,6 +66,11 @@ class _GameEndScreenState extends State<GameEndScreen> {
                               style: Theme.of(context).textTheme.titleLarge,
                             ),
                             Text(
+                              "${state.names[state.starterIndex]} starts the discussion!",
+                              style: Theme.of(context).textTheme.titleMedium,
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
                               "When you are ready, tap the button below to reveal the answer.",
                               textAlign: TextAlign.center,
                             ),

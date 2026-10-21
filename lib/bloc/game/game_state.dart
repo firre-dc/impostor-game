@@ -5,6 +5,7 @@ final class GameState {
   final int impostorIndex;
   final bool roleVisible;
   final int currentPlayerIndex;
+  final int starterIndex;
   final GameWord word;
   final bool impostorGetsTip;
 
@@ -13,6 +14,7 @@ final class GameState {
     this.impostorIndex,
     this.roleVisible,
     this.currentPlayerIndex,
+    this.starterIndex,
     this.word,
     this.impostorGetsTip,
   );
@@ -22,6 +24,7 @@ final class GameState {
     int? impostorIndex,
     bool? roleVisible,
     int? currentPlayerIndex,
+    int? starterIndex,
     GameWord? word,
     bool? impostorGetsTip,
   }) {
@@ -30,6 +33,7 @@ final class GameState {
       impostorIndex ?? this.impostorIndex,
       roleVisible ?? this.roleVisible,
       currentPlayerIndex ?? this.currentPlayerIndex,
+      starterIndex ?? this.starterIndex,
       word ?? this.word,
       impostorGetsTip ?? this.impostorGetsTip,
     );

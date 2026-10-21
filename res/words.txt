@@ -1,8 +1,6 @@
 Paraplu,nat
 Kompas,avontuur
-Vulkaan,
 Bibliotheek, stil
-Spiegel,
 Avontuur,Onbekend
 Koraal, vakantie
 Satelliet,verbinding
@@ -26,14 +24,15 @@ Nathan, gekend
 alarm, 24 uur
 realiteit,dromen
 bemanning,zee
-strand,
-bus,
-golven,Surfen
+golven,radio
 verloving,Ja
 figuur,Silhouet
 auto, verzekering
 aansteker,vragen
-routine,
 feminist, links
 tegenstander,Competitie
 maïs,machine
+Routine,herhaling
+Strand,voetbal
+Bus,groep
+Spiegel,identiteit

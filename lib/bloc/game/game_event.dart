@@ -5,3 +5,5 @@ sealed class GameEvent {}
 final class NextPlayer extends GameEvent {}
 
 final class TurnCard extends GameEvent {}
+
+final class PickStarter extends GameEvent {}

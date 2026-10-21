@@ -7,7 +7,17 @@ part 'enter_names_state.dart';
 class EnterNamesBloc extends Bloc<EnterNamesEvent, EnterNamesState> {
   EnterNamesBloc() : super(EnterNamesState([])) {
     on<EnterName>((event, emit) {
-      emit(EnterNamesState([...state.names, event.name]));
+      emit(
+        EnterNamesState([
+          ...state.names,
+          event.name,
+        ], impostorGetsTip: state.impostorGetsTip),
+      );
+    });
+    on<ToggleImpostorTip>((event, emit) {
+      emit(
+        EnterNamesState(state.names, impostorGetsTip: !state.impostorGetsTip),
+      );
     });
   }
 }

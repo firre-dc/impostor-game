@@ -4,11 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:impostor_game/bloc/enter_names/enter_names_bloc.dart';
 import 'package:impostor_game/bloc/game/game_bloc.dart';
+import 'package:impostor_game/models/GameWord.dart';
 import 'package:impostor_game/screens/enter_names.dart';
 import 'package:impostor_game/screens/game.dart';
 import 'package:impostor_game/screens/game_end.dart';
 
-GoRouter createRouter(List<String> words) => GoRouter(
+GoRouter createRouter(List<GameWord> words) => GoRouter(
   routes: <RouteBase>[
     GoRoute(
       path: '/',
@@ -18,8 +19,16 @@ GoRouter createRouter(List<String> words) => GoRouter(
       path: '/game',
       builder: (BuildContext context, GoRouterState state) {
         final names = context.read<EnterNamesBloc>().state.names;
+        final impostorGetsTip = context
+            .read<EnterNamesBloc>()
+            .state
+            .impostorGetsTip;
         return BlocProvider(
-          create: (context) => GameBloc(initialNames: names, words: words),
+          create: (context) => GameBloc(
+            initialNames: names,
+            words: words,
+            impostorGetsTip: impostorGetsTip,
+          ),
           child: const GamePage(),
         );
       },

@@ -21,7 +21,7 @@ class GamePage extends StatelessWidget {
                       onTap: () => context.read<GameBloc>().add(TurnCard()),
                       child: Center(
                         child: state.roleVisible
-                            ? Text(getText(state))
+                            ? getRoleCard(context, state)
                             : Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 spacing: 10,
@@ -53,12 +53,33 @@ class GamePage extends StatelessWidget {
     );
   }
 
-  String getText(GameState state) {
-    if (state.currentPlayerIndex == state.impostorIndex) {
-      return "You are the impostor!";
-    } else if (state.currentPlayerIndex < state.names.length) {
-      return state.word;
-    }
-    return "Something went wrong";
+  Widget getRoleCard(BuildContext context, GameState state) {
+    final bool isImpostor = state.currentPlayerIndex == state.impostorIndex;
+    final bool showTip =
+        isImpostor && state.impostorGetsTip && state.word.tip.isNotEmpty;
+
+    return Padding(
+      padding: EdgeInsets.all(24),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 20,
+        children: [
+          Text(
+            isImpostor ? "You are the impostor!" : state.word.word,
+            style: Theme.of(context).textTheme.headlineMedium,
+            textAlign: TextAlign.center,
+          ),
+          if (showTip) ...[
+            Divider(),
+            Text("Tip", style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              state.word.tip,
+              style: Theme.of(context).textTheme.titleLarge,
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ],
+      ),
+    );
   }
 }

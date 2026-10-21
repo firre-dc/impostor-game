@@ -5,7 +5,8 @@ final class GameState {
   final int impostorIndex;
   final bool roleVisible;
   final int currentPlayerIndex;
-  final String word;
+  final GameWord word;
+  final bool impostorGetsTip;
 
   GameState(
     this.names,
@@ -13,6 +14,7 @@ final class GameState {
     this.roleVisible,
     this.currentPlayerIndex,
     this.word,
+    this.impostorGetsTip,
   );
 
   GameState copyWith({
@@ -20,7 +22,8 @@ final class GameState {
     int? impostorIndex,
     bool? roleVisible,
     int? currentPlayerIndex,
-    String? word,
+    GameWord? word,
+    bool? impostorGetsTip,
   }) {
     return GameState(
       names ?? this.names,
@@ -28,6 +31,7 @@ final class GameState {
       roleVisible ?? this.roleVisible,
       currentPlayerIndex ?? this.currentPlayerIndex,
       word ?? this.word,
+      impostorGetsTip ?? this.impostorGetsTip,
     );
   }
 }

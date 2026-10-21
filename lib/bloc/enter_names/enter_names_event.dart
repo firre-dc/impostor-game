@@ -7,3 +7,5 @@ final class EnterName extends EnterNamesEvent {
   final String name;
   EnterName(this.name);
 }
+
+final class ToggleImpostorTip extends EnterNamesEvent {}

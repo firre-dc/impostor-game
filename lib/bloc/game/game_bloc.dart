@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
+import 'package:impostor_game/models/GameWord.dart';
 
 part 'game_event.dart';
 part 'game_state.dart';
@@ -9,17 +10,21 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   final List<String> names;
   static final Random _random = Random();
 
-  GameBloc({required List<String> initialNames, required List<String> words})
-    : names = initialNames,
-      super(
-        GameState(
-          initialNames,
-          initialNames.isNotEmpty ? _random.nextInt(initialNames.length) : 0,
-          false,
-          0,
-          words[_random.nextInt(words.length)],
-        ),
-      ) {
+  GameBloc({
+    required List<String> initialNames,
+    required List<GameWord> words,
+    bool impostorGetsTip = true,
+  }) : names = initialNames,
+       super(
+         GameState(
+           initialNames,
+           initialNames.isNotEmpty ? _random.nextInt(initialNames.length) : 0,
+           false,
+           0,
+           words[_random.nextInt(words.length)],
+           impostorGetsTip,
+         ),
+       ) {
     on<NextPlayer>(_onNextPlayer);
     on<TurnCard>(_onTurnCard);
   }

@@ -2,10 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:impostor_game/bloc/enter_names/enter_names_bloc.dart';
+import 'package:impostor_game/models/GameWord.dart';
 import 'package:impostor_game/router.dart';
 
 class ImpostorApp extends StatelessWidget {
-  final List<String> words;
+  final List<GameWord> words;
 
   const ImpostorApp({super.key, required this.words});
 

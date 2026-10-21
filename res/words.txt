@@ -1,40 +1,39 @@
-Paraplu
-Kompas
-Vulkaan
-Bibliotheek
-Spiegel
-Avontuur
-Koraal
-Satelliet
-Fluisteren
-Labyrint
-Ayco
-Skireis
-Tenerife
-Albo
-Lucas
-Arthur
-Leon
-Firre
-Berre
-Jerome
-Martin
-Kwinten
-Arnout
-alarm
-realiteit
-bemanning
-strand
-recht
-busje
-golven
-verloving
-figuur
-auto
-aansteker
-routine
-kielzog
-feminist
-tegenstander
-vergezellen
-maïs
+Paraplu,nat
+Kompas,avontuur
+Vulkaan,
+Bibliotheek, stil
+Spiegel,
+Avontuur,Onbekend
+Koraal, vakantie
+Satelliet,verbinding
+Fluisteren,geheim
+Labyrint,Mythologie
+Ayco,gekend
+Skireis,Wintersport
+Tenerife,WK
+Taghazout, WK
+Alberic,gekend
+Lucas,gekend
+Arthur,gekend
+Leon,gekend
+Firre,gekend
+Berre,gekend
+Jerome,gekend
+Martin,gekend
+Kwinten,gekend
+Arnout,gekend
+Nathan, gekend
+alarm, 24 uur
+realiteit,dromen
+bemanning,zee
+strand,
+bus,
+golven,Surfen
+verloving,Ja
+figuur,Silhouet
+auto, verzekering
+aansteker,vragen
+routine,
+feminist, links
+tegenstander,Competitie
+maïs,machine

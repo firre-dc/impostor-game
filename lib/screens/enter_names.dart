@@ -39,6 +39,17 @@ class EnterNames extends StatelessWidget {
                     return Text(state.names[index]);
                   },
                 ),
+                SwitchListTile(
+                  title: Text("Give the impostor a tip"),
+                  subtitle: Text(
+                    state.impostorGetsTip
+                        ? "The impostor sees a hint about the word"
+                        : "The impostor gets no hint at all",
+                  ),
+                  value: state.impostorGetsTip,
+                  onChanged: (_) =>
+                      context.read<EnterNamesBloc>().add(ToggleImpostorTip()),
+                ),
               ],
             ),
           ),

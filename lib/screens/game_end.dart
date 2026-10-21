@@ -51,7 +51,7 @@ class _GameEndScreenState extends State<GameEndScreen> {
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
                             Text(
-                              state.word,
+                              state.word.word,
                               style: Theme.of(context).textTheme.headlineMedium,
                             ),
                           ],
@@ -60,10 +60,7 @@ class _GameEndScreenState extends State<GameEndScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           spacing: 10,
                           children: [
-                            Icon(
-                              Icons.search,
-                              size: 64,
-                            ),
+                            Icon(Icons.search, size: 64),
                             Text(
                               "Discuss who the impostor is!",
                               style: Theme.of(context).textTheme.titleLarge,
